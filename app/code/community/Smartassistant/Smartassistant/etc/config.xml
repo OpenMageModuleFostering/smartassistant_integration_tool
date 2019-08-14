@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Smartassistant_Smartassistant>
-            <version>1.0.0</version>
+            <version>1.0.2</version>
         </Smartassistant_Smartassistant>
     </modules>
     <global>
@@ -75,13 +75,6 @@
         </routers>
     </admin>
     <frontend>
-        <layout>
-            <updates>
-                <smartassistant>
-                    <file>smartassistant.xml</file>
-                </smartassistant>
-            </updates>
-        </layout>
         <routers>
             <smartassistant>
                 <use>standard</use>

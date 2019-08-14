@@ -31,20 +31,35 @@ class Smartassistant_Smartassistant_Block_Widget extends Mage_Core_Block_Abstrac
         return $this->_containerId;
     }
 
+    /**
+     * @return string
+     */
+    public function getCss()
+    {
+        $css = <<<CSS
+<link rel="stylesheet" type="text/css" href="//st.smartassistant.com/advisor-fe-web/css-design?advisorCode={$this->getCode()}" media="all" />
+CSS;
+        return $css;
+    }
+
     public function getJs()
     {
-        $js = '<script type="text/javascript">
+        $js = <<<JS
+<script src="//st.smartassistant.com/advisor-fe-web/assets/js-nwd/smartassistant.nwd.all.js"></script>
+<script src="//st.smartassistant.com/advisor-fe-web/custom-javascript?advisorCode={$this->getCode()}"></script>
+<script type="text/javascript">
 if(SmartAssistant){
     smrt42_jquery(function() {
         SmartAssistant.integrate({
-            "divId" : "'.$this->getContainerId().'",
-            "advisorContextPath" : "'.$this->getContextPath().'",
-            "advisorCode" : "'.$this->getCode().'",
+            "divId" : "{$this->getContainerId()}",
+            "advisorContextPath" : "{$this->getContextPath()}",
+            "advisorCode" : "{$this->getCode()}",
             "disableTracking" : false
         });
     });
 }
-</script>';
+</script>
+JS;
         return $js;
     }
 
@@ -56,7 +71,11 @@ if(SmartAssistant){
 
         $layout = $this->getLayout();
         $body = $layout->getBlock('before_body_end');
-        $body->append($layout->createBlock('core/text', $this->getContainerId())->setText($this->getJs()));
+        $body->append($layout->createBlock(
+            'core/text',
+            $this->getContainerId())->setText($this->getCss() . $this->getJs())
+        );
+
         return '<div id="' . $this->getContainerId() . '"></div>';
     }
 }
