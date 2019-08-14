@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_smartassistant_export_edit>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>smartassistant/smartassistant.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>smartassistant/smartassistant.css</name>
+            </action>
+        </reference>
+    </adminhtml_smartassistant_export_edit>
+</layout>

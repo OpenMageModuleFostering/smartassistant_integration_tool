@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<widgets>
+    <smartassistant_widget type="smartassistant/widget" translate="smartassistant" module="smartassistant">
+        <name>SMARTASSISTANT widget</name>
+        <description>Allows you to put SMARTASSISTANT code to your site</description>
+        <parameters>
+            <code>
+                <label>Advisor code</label>
+                <description>See your advisor code at SMARTASSISTANT Integrate page</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+            </code>
+            <uc>
+                <label>Unique</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>smartassistant/adminhtml_renderer_widget</type>
+            </uc>
+        </parameters>
+    </smartassistant_widget>
+</widgets>

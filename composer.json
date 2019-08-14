@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Smartassistant_Integration_Tool",
+    "type": "magento-module",
+    "license": "Open-Software-License",
+    "homepage": "",
+    "description": "This Module provide synchronization with SMARTASSISTANT product advisor configurator.",
+    "authors": [
+    {
+        "name": "SMARTASSISTANT",
+        "email": "j.wojciechowski@smartassistant.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

@@ -1,0 +1,49 @@
+.hidden-row {
+    display: none;
+}
+#smartassistant-loader-wrapper {
+    position:relative;
+}
+#smartassistant_loader {
+    position:absolute;
+    top: 30%;
+    left: 27%;
+    color:#d85909;
+    font-size:1.1em;
+    font-weight:bold;
+    text-align:left;
+    opacity:0.80;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; /* IE8 */
+    z-index:500;
+    width:400px;
+    border:2px solid #f1af73;
+    background:#fff4e9;
+    padding:15px;
+}
+#smartassistant_loader .loader {
+    width:100%;
+    color:#d85909;
+    font-weight:bold;
+    text-align:center;
+    z-index:1000;
+}
+
+.task-stats-container {
+}
+.task-stats-container:nth-child(odd) {
+    background-color:#dadfe0;
+}
+.task-clear {
+    clear:both;
+}
+.task-part {
+    width:50%;
+    float:left;
+}
+.task-stats-container .task-details {
+    padding-right: 1%;
+    width: 49%;
+}
+.task-stats-container .task-log {
+    float:right;
+}

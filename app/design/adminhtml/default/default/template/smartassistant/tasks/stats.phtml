@@ -1,0 +1,21 @@
+<?php $stats = $this->getStats(); ?>
+
+<div id="task-stats-container">
+    <?php foreach ($stats as $stat) { ?>
+
+    <br />
+
+    <div style="font-weight:bold;">
+        <?php echo $stat['status']['export_name']; ?>:
+        <?php echo $stat['status']['progress']; ?> / <?php echo $stat['status']['amount']; ?>
+        (<?php echo $stat['status']['status']; ?>)
+    </div>
+    <div>
+        <?php foreach ($stat['log'] as $log) { ?>
+            <strong><?php echo $log['datetime']; ?></strong>
+            <?php echo $log['message']; ?>
+            <br />
+        <?php } ?>
+    </div>
+    <?php } ?>
+</div>

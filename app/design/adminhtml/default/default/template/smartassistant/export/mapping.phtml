@@ -1,0 +1,82 @@
+<?php
+$map = $this->getMap();
+?>
+<div class="entry-edit-head">
+    <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('smartassistant')->__('Attributes naming') ?></h4>
+    <div class="form-buttons"></div>
+</div>
+<div class="fieldset mfe-mapping" id="content">
+    <div class="grid">
+        <table id="mapping-table" cellspacing="0" cellpadding="0" class="data" style="width:100%;">
+            <thead>
+                <tr class="headings">
+                    <th width="50"></th>
+                    <th width="180"><?php echo $this->__('Field Name')?></th>
+                    <th width="80"><?php echo $this->__('Attribute')?></th>
+                    <th width="80"><?php echo $this->__('Enabled')?></th>
+                    <th width="80"><?php echo $this->__('When empty')?></th>
+                    <th width="50"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($map as $item) { ?>
+                <tr>
+                    <td>
+                        <button type="button" onclick="SmartassistantMap.up(this);" class="button"><span><span><?php echo $this->__('↑')?></span></span></button>
+                        <button type="button" onclick="SmartassistantMap.down(this);" class="button"><span><span><?php echo $this->__('↓')?></span></span></button>
+                    </td>
+                    <td>
+                        <input type="hidden" name="map[id][<?php echo $item->getId(); ?>]" value="<?php echo $item->getId(); ?>" />
+                        <input type="text" class="input-text  fieldname-entry required-entry" name="map[fieldname][<?php echo $item->getId(); ?>]" value="<?php echo $item->getFieldname(); ?>" />
+                    </td>
+                    <td>
+                        <?php echo Mage::helper('smartassistant')->getProductAttributesSelectHtml('map[attribute_code]['.$item->getId().']', $item->getAttributeCode()); ?>
+                    </td>
+                    <td>
+                        <select name="map[enabled][<?php echo $item->getId(); ?>]" style="width:100%;">
+                            <option value="1" <?php echo $item->getEnabled() ? 'selected="selected"' : ''; ?>><?php echo $this->__('Yes'); ?></option>
+                            <option value="0" <?php echo $item->getEnabled() ? '' : 'selected="selected"'; ?>><?php echo $this->__('No'); ?></option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" class="input-text" name="map[when_empty][<?php echo $item->getId(); ?>]" value="<?php echo $item->getWhenEmpty(); ?>" />
+                    </td>
+                    <td>
+                        <button type="button" onclick="SmartassistantMap.remove(this);" class="button"><span><span><?php echo $this->__('✖') ?></span></span></button>
+                    </td>
+                </tr>
+                <?php } ?>
+            </tbody>
+            <tfoot>
+                <tr class="pattern hidden-row">
+                    <td>
+                        <button type="button" onclick="SmartassistantMap.up(this);" class="button"><span><span><?php echo $this->__('↑')?></span></span></button>
+                        <button type="button" onclick="SmartassistantMap.down(this);" class="button"><span><span><?php echo $this->__('↓')?></span></span></button>
+                    </td>
+                    <td>
+                        <input type="hidden" name="map[id][]" value="" />
+                        <input type="text" class="input-text fieldname-entry" name="map[fieldname][]" value="" />
+                    </td>
+                    <td>
+                        <?php echo Mage::helper('smartassistant')->getProductAttributesSelectHtml('map[attribute_code][]', ''); ?>
+                    </td>
+                    <td>
+                        <select name="map[enabled][]" style="width:100%;">
+                            <option value="1"><?php echo $this->__('Yes'); ?></option>
+                            <option value="0"><?php echo $this->__('No'); ?></option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" class="input-text" name="map[when_empty][]" value="" />
+                    </td>
+                    <td>
+                        <button type="button" onclick="SmartassistantMap.remove(this);" class="button"><span><span><?php echo $this->__('✖') ?></span></span></button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <p style="margin-top:10px;">
+            <button type="button" onclick="SmartassistantMap.add();" class="button"><span><span><?php echo $this->__('Add Row') ?></span></span></button>
+        </p>
+    </div>
+</div>

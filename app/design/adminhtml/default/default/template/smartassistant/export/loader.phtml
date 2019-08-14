@@ -1,0 +1,22 @@
+
+<?php if ($this->getRunLoader()) { ?>
+<script type="text/javascript">
+document.observe("dom:loaded", function() {
+    SmartassistantStatus.start(
+        '<?php echo MAge::helper('adminhtml')->getUrl('*/*/stats', array('id' => Mage::app()->getRequest()->getParam('id'))); ?>'
+    );
+});
+</script>
+<?php } ?>
+<div id="smartassistant-loader-wrapper">
+    <div id="smartassistant_loader" style="display:none;">
+        <p class="loader" id="loading_mask_loader">
+            <img src="/skin/adminhtml/default/default/images/ajax-loader-tr.gif" alt="Loading...">
+            <br>
+            <div id="task-stats-container"></div>
+        </p>
+        <button type="button" onclick="SmartassistantStatus.stop();">
+            <?php echo Mage::helper('smartassistant')->__('Close'); ?>
+        </button>
+    </div>
+</div>

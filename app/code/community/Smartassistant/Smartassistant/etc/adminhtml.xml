@@ -1,0 +1,62 @@
+<?xml version="1.0" ?>
+<config>
+        <menu>
+            <catalog>
+                <children>
+                    <smartassistant module="smartassistant">
+                        <title>SMARTASSISTANT</title>
+                        <action>adminhtml/smartassistant_export</action>
+                        <sort_order>1000</sort_order>
+
+                        <children>
+                            <export module="smartassistant">
+                                <title>Export CSV</title>
+                                <action>adminhtml/smartassistant_export</action>
+                                <sort_order>10</sort_order>
+                            </export>
+                            <tasks module="smartassistant">
+                                <title>Tasks list</title>
+                                <action>adminhtml/smartassistant_tasks</action>
+                                <sort_order>20</sort_order>
+                            </tasks>
+                            <panel module="smartassistant">
+                                <title>Advisor configurator</title>
+                                <action>adminhtml/smartassistant_panel</action>
+                                <sort_order>30</sort_order>
+                            </panel>
+                        </children>
+                    </smartassistant>
+                </children>
+            </catalog>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system module="smartassistant">
+                            <children>
+                                <config>
+                                    <children>
+                                        <smartassistant translate="title" module="smartassistant">
+                                            <title>Smartassistant</title>
+                                            <sort_order>99</sort_order>
+                                        </smartassistant>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <smartassistant>
+                    <file>smartassistant.xml</file>
+                </smartassistant>
+            </updates>
+        </layout>
+</config>

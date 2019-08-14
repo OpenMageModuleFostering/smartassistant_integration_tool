@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+        <reference name="before_body_end">
+            <block type="core/text" name="smartassistant_js_all">
+                <action method="setText"><text><![CDATA[<script src="//st.smartassistant.com/advisor-fe-web/assets/js-nwd/smartassistant.nwd.all.js"></script>]]></text></action>
+            </block>
+            <block type="core/text" name="smartassistant_js_advisor">
+                <action method="setText"><text><![CDATA[<script src="//st.smartassistant.com/advisor-fe-web/custom-javascript?advisorCode=DD1KF7Rb"></script>]]></text></action>
+            </block>
+            <block type="core/text" name="smartassistant_css_advisor">
+                <action method="setText"><text><![CDATA[<link rel="stylesheet" type="text/css" href="//st.smartassistant.com/advisor-fe-web/css-design?advisorCode=DD1KF7Rb" media="all" />]]></text></action>
+            </block>
+        </reference>
+	</default>
+</layout>

@@ -1,0 +1,91 @@
+<?php
+$task = $this->getTask();
+$configs = $task->getTaskConfigs();
+?>
+
+<div class="content-header">
+    <h3 class="icon-head">
+        <?php echo Mage::helper('smartassistant')->__('Task preview'); ?>
+    </h3>
+    <p class="form-buttons">
+        <button title="Back" type="button" class="scalable back" onclick="setLocation('<?php echo $this->getBackUrl(); ?>')" style="">
+            <span><span><span>Back</span></span></span>
+        </button>
+    </p>
+</div>
+
+
+<?php if ($this->getTask()->getStatusId() != Smartassistant_Smartassistant_Model_Task_Status::FINISHED ) { ?>
+<script type="text/javascript">
+(function() {
+    var interval = <?php echo $this->getTaskRefreshInterval(); ?>;
+    setInterval(function(){
+        new Ajax.Request('<?php echo $this->getStatusUrl(); ?>', {
+            method: 'get',
+            parameters: 'id=<?php echo $this->getTaskId(); ?>',
+            onCreate: function(request) {
+                Ajax.Responders.unregister(varienLoaderHandler.handler);
+            },
+            onSuccess: function(transport) {
+                $('task-stats-container').replace(transport.responseText);
+            }
+        });
+    }, interval);
+})();
+</script>
+<?php } ?>
+
+<style type="text/css">
+    .task-clear {
+        clear:both;
+    }
+    .task-part {
+        width:50%;
+        float:left;
+    }
+    .task-stats-container .task-details {
+        padding-right: 1%;
+        width: 49%;
+    }
+    .task-stats-container .task-log {
+        float:right;
+    }
+</style>
+
+<div class="task-stats-container">
+    <div class="task-part task-details">
+        <h4><?php echo Mage::helper('smartassistant')->__('Task'); ?> <?php echo $task->getTime(); ?> (<?php echo $task->getStatus()->getName(); ?>)</h4>
+        <br />
+        <div class="grid">
+            <table cellspacing="0" cellpadding="0" class="data">
+                <thead>
+                    <tr class="headings">
+                        <th width="50"><?php echo Mage::helper('smartassistant')->__('Config name');?></th>
+                        <th width="50"><?php echo Mage::helper('smartassistant')->__('Generation');?></th>
+                        <th width="50"><?php echo Mage::helper('smartassistant')->__('Send to FTP');?></th>
+                        <th width="50"><?php echo Mage::helper('smartassistant')->__('Items amount');?></th>
+                        <th width="50"><?php echo Mage::helper('smartassistant')->__('Status');?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($configs as $config) { ?>
+                        <tr>
+                            <td><?php echo $config->getConfig()->getName() ?></td>
+                            <td><?php echo ($config->getGenerate() ? Mage::helper('smartassistant')->__('Yes') : Mage::helper('smartassistant')->__('No')) ?></td>
+                            <td><?php echo ($config->getSend() ? Mage::helper('smartassistant')->__('Yes') : Mage::helper('smartassistant')->__('No')) ?></td>
+                            <td><?php echo $config->getItems() ?></td>
+                            <td><?php echo $config->getStatus()->getName() ?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="task-part task-log">
+        <h4><?php echo Mage::helper('smartassistant')->__('Log of task');?> <?php echo $task->getTime();?></h4>
+        <?php echo $this->getStatsBlock()->toHtml(); ?>
+    </div>
+    <div class="task-clear"></div>
+</div>
+
+
